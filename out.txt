@@ -1,0 +1,1 @@
+['YUG', 'Yugoslavia', 'Europe', 'Southern Europe', 102173.0, 1918.0, 10640000.0, 72.4, 17000.0, '\\N', 'Jugoslavija', 'Federal Republic', 'Vojislav Ko\x9atunica', 1792.0, 'YU\n']
