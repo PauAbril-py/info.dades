@@ -11,7 +11,7 @@ def cls():
     os.system('cls' if os.name=='nt' else 'clear')
 
 def opn():
-	#turn into list and remove extra "
+	#turn into list and remove extra " #TODO: remove \n
 	for i in file:
 		i = i.replace('"', '')
 
@@ -64,16 +64,22 @@ def search(what, name):
 		if what.lower() == header[i].lower():
 			what = int(i) #TODO: error correction
 			break
-
-	for i in countrylist:
-		if i[what].lower() == name.lower():
-			print()
-		#	print(header)
-			#print(i)
-			output(i, 'out.txt').print_result() #TODO: directory
-			yn = input('Do you want to store it on a file? [y/n] ') #TODO: multiple countries
-			if yn == 'y':
-				output(i, 'out.txt').store_result() #TODO: directory
+	#	else:
+	#		what = 'F'
+	if what == 'F':
+		print('Error')
+		ui()
+	else:
+		for i in countrylist:
+			if i[what].lower() == name.lower():
+				print()
+			#	print(header)
+			#	print(i)
+				output(i, 'out.txt').print_result() #TODO: directory
+				yn = input('Do you want to store it on a file? [y/n] ') #TODO: 	multiple countries
+				if yn == 'y':
+					output(i, 'out.txt').store_result() #TODO: directory
+				#return i
 
 #def choose_file():
 #	directory.close()
@@ -96,12 +102,19 @@ help:  Shows help page.
 exit:  Exits the program.
 \n------------------------------\n''')
 
-def format_output(output):
-	pass
+def format_output(inoutput):
+#	outputlist = []
+	output = str()
+	for i in range(len(header)):
+		#outputlist.append(str(header[i])+': '+str(inoutput[i]))
+		output = output + str(header[i])+': '+str(inoutput[i])+'\n'
+	#for i in outputlist:
+	#	print(i)
+	return(output)
 
 class output:
 	def __init__(self, content, directory):
-		self.content = content
+		self.content = format_output(content)
 		self.directory = directory
 
 	def store_result(self):

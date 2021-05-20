@@ -1,1 +1,17 @@
-['YUG', 'Yugoslavia', 'Europe', 'Southern Europe', 102173.0, 1918.0, 10640000.0, 72.4, 17000.0, '\\N', 'Jugoslavija', 'Federal Republic', 'Vojislav Ko\x9atunica', 1792.0, 'YU\n']
+Code: AGO
+Name: Angola
+Continent: Africa
+Region: Central Africa
+SurfaceArea: 1246700.0
+IndepYear: 1975.0
+Population: 12878000.0
+LifeExpectancy: 38.3
+GNP: 6648.0
+GNPOld: 7984.0
+LocalName: Angola
+GorvernmentForm: Republic
+HeadOfState: José Eduardo dos Santos
+Capital: 56.0
+Code2
+: AO
+
