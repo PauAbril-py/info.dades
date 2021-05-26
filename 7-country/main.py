@@ -41,17 +41,21 @@ print(header,' \n')
 def ui():
 	choice = str(input('''
 What do you want to do:\n
-1. search | 2. choose storage | 3. help | 4. exit\n'''))
+1. search | 2. continent info | 3. Life expectancy | 4. choose storage | 5. help | 6. exit\n'''))
 
 #TODO: do
 	cls()
 	if choice == '1' or choice.lower() == 'search':
 		search(input('What do you want to search:\n\t'),input('Name:\n\t'))
-	elif choice == '2' or choice.lower() == 'choose file': #TODO: directory
-		store_dir = input('Choose directory to save the files')
+	elif choice == '2' or choice.lower() == 'help':
+		continent()
 	elif choice == '3' or choice.lower() == 'help':
+		life_expectancy()
+	elif choice == '4' or choice.lower() == 'choose file': #TODO: directory
+		store_dir = input('Choose directory to save the files')	
+	elif choice == '5' or choice.lower() == 'help':
 		help()
-	elif choice == '4' or choice.lower() == 'exit':
+	elif choice == '6' or choice.lower() == 'exit':
 		cls()
 		exit()	
 	ui()
@@ -70,24 +74,34 @@ def search(what, name):
 		print('Error')
 		ui()
 	else:
+		results = []
 		for i in countrylist:
 			if i[what].lower() == name.lower():
 				print()
 			#	print(header)
 			#	print(i)
 				output(i, 'out.txt').print_result() #TODO: directory
-				yn = input('Do you want to store it on a file? [y/n] ') #TODO: 	multiple countries
-				if yn == 'y':
+				
+				results.append(i)
+		
+		yn = input('Do you want to store it on a file? [y/N] ')
+		if yn == 'y':
+			if len(results) == 1:
+				for i in results:
 					output(i, 'out.txt').store_result() #TODO: directory
+			else:
+				output(i, 'out.txt').clear_file()
+				for i in results:
+					output(i, 'out.txt').store_multiple_results() #TODO: directory
 				#return i
 
-#def choose_file():
-#	directory.close()
+def life_expectancy(IncomePerCapita, LifeExpectancy):	#GNP [8] / Population [6]
+	for i in countrylist:
+		IPC = i[8]/i[6]
+		print(IPC)
+		input()
+	pass
 
-#	directory = open(input('What csv file do you want to open:\n\t'), 'r')
-#	
-#	file = directory.readlines()
-#	opn()
 
 def help():
 	print('''\n------------------------------\n
@@ -121,6 +135,18 @@ class output:
 		fil = open(self.directory, 'w')
 		fil.write(str(self.content))
 		print('Saved to "'+self.directory+'"')
+		fil.close()
+
+	def store_multiple_results(self):
+		fil = open(self.directory, 'a')
+		fil.write(str(self.content))
+		print('Saved to "'+self.directory+'"')
+		fil.close()
+	
+	def clear_file(self):
+		fil = open(self.directory, 'w')
+		fil.write('')
+		fil.close()
 	
 	def print_result(self):
 		print(self.content)

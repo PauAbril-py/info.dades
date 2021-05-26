@@ -1,17 +1,17 @@
-Code: AGO
-Name: Angola
-Continent: Africa
-Region: Central Africa
-SurfaceArea: 1246700.0
-IndepYear: 1975.0
-Population: 12878000.0
-LifeExpectancy: 38.3
-GNP: 6648.0
-GNPOld: 7984.0
-LocalName: Angola
-GorvernmentForm: Republic
-HeadOfState: José Eduardo dos Santos
-Capital: 56.0
+Code: AND
+Name: Andorra
+Continent: Europe
+Region: Southern Europe
+SurfaceArea: 468.0
+IndepYear: 1278.0
+Population: 78000.0
+LifeExpectancy: 83.5
+GNP: 1630.0
+GNPOld: \N
+LocalName: Andorra
+GorvernmentForm: Parliamentary Coprincipality
+HeadOfState: 
+Capital: 55.0
 Code2
-: AO
+: AD
 
