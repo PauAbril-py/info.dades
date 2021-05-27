@@ -1,6 +1,6 @@
 import os
 
-#directory = open('7-country/files/country-1.csv', 'r').readlines()
+#directory = open('7-country/files/country-1.csv', 'r')
 directory = open('countrys.csv', 'r') #ToDO: move to function
 file = directory.readlines()
 
@@ -50,7 +50,7 @@ What do you want to do:\n
 	elif choice == '2' or choice.lower() == 'help':
 		continent()
 	elif choice == '3' or choice.lower() == 'help':
-		life_expectancy()
+		life_expectancy(input('Income per capita:\n\t'),input('Life expectancy:\n\t'))
 	elif choice == '4' or choice.lower() == 'choose file': #TODO: directory
 		store_dir = input('Choose directory to save the files')	
 	elif choice == '5' or choice.lower() == 'help':
@@ -96,10 +96,21 @@ def search(what, name):
 				#return i
 
 def life_expectancy(IncomePerCapita, LifeExpectancy):	#GNP [8] / Population [6]
+	results = []
 	for i in countrylist:
-		IPC = i[8]/i[6]
-		print(IPC)
-		input()
+		#print(i)
+		try:
+			IPC = float(round(i[8]/i[6], num_after_point(IncomePerCapita)))
+			LE = float(round(i[7], num_after_point(LifeExpectancy)))
+	#		print(IPC, IncomePerCapita,' | ',LE,LifeExpectancy)
+			if float(IncomePerCapita) == IPC and float(LifeExpectancy) == LE:
+				print(i)
+				results.append(i)
+		except:
+	#		print('no va')
+			pass
+		#print(IPC)
+		
 	pass
 
 
@@ -151,9 +162,12 @@ class output:
 	def print_result(self):
 		print(self.content)
 
+def num_after_point(x):
+    s = str(x)
+    if not '.' in s:
+        return 0
+    return len(s) - s.index('.') - 1
 
-def life_expectancy():
-	pass
 
 
 
